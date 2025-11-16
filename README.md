@@ -35,7 +35,7 @@ En este proyecto, el CD construye y empuja la imagen Docker a GitHub Container R
 7. **Despliegue**: La imagen se empuja a GHCR, lista para ser desplegada con Docker Compose o Kubernetes.
 
 ### Ejemplo Práctico
-Supongamos que queremos agregar una nueva ruta a la aplicación.
+Supongamos que queremos agregar una función de suma a la aplicación.
 
 1. **Clona el repositorio**:
    ```
@@ -45,23 +45,23 @@ Supongamos que queremos agregar una nueva ruta a la aplicación.
 
 2. **Crea una nueva rama** (opcional pero recomendado):
    ```
-   git checkout -b feature/nueva-ruta
+   git checkout -b feature/funcion-suma
    ```
 
-3. **Edita el código**: Modifica `app.py` para agregar una nueva ruta, por ejemplo:
+3. **Edita el código**: Modifica `app.py` para agregar una función de suma, por ejemplo:
    ```python
-   @app.route('/saludo')
-   def saludo():
-       return "¡Hola desde la nueva ruta!"
+   def suma(a, b):
+       """Función que suma dos números"""
+       return a + b
    ```
 
-4. **Agrega pruebas**: Actualiza `test_app.py` para incluir una prueba para la nueva ruta:
+4. **Agrega pruebas**: Actualiza `test_app.py` para incluir una prueba para la función suma:
    ```python
-   def test_saludo():
-       with app.test_client() as client:
-           response = client.get('/saludo')
-           assert response.status_code == 200
-           assert "¡Hola desde la nueva ruta!" in response.get_data(as_text=True)
+   def test_suma():
+       """Prueba unitaria para la función suma"""
+       assert suma(2, 3) == 5
+       assert suma(-1, 1) == 0
+       assert suma(0, 0) == 0
    ```
 
 5. **Ejecuta pruebas localmente**:
@@ -72,8 +72,8 @@ Supongamos que queremos agregar una nueva ruta a la aplicación.
 6. **Commit y push**:
    ```
    git add .
-   git commit -m "Agrega nueva ruta /saludo con pruebas"
-   git push origin feature/nueva-ruta
+   git commit -m "Agrega función suma con pruebas"
+   git push origin feature/funcion-suma
    ```
 
 7. **Crea un Pull Request**: En GitHub, crea un PR para fusionar a la rama principal.
@@ -87,7 +87,13 @@ Supongamos que queremos agregar una nueva ruta a la aplicación.
 
 Este proceso asegura que cualquier cambio pase por pruebas antes de llegar a producción, reduciendo errores y mejorando la calidad del software.
 
+## Referencias
+La explicación del ciclo CI/CD se basa en conceptos estándar de desarrollo de software y mejores prácticas documentadas en:
+- Documentación oficial de GitHub Actions: https://docs.github.com/en/actions
+- Conceptos de CI/CD de Atlassian: https://www.atlassian.com/continuous-delivery
+- Prácticas de testing con pytest: https://docs.pytest.org/
+
 ## Autor
 David Cocha
 
-LINK DE DESPLIEGUE : https://david-cocha.onrender.com/
+LINK DE DESPLIEGUE : https://david-readme-md.onrender.com  
