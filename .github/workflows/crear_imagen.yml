@@ -39,4 +39,4 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: ghcr.io/silvert05/cochadavid:latest
+        tags: ghcr.io/silvert05/David_README.md:latest
